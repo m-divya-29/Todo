@@ -3,18 +3,13 @@
     <head>
         <link href = "webjars/bootstrap/5.2.2/css/bootstrap.min.css" rel = "stylesheet"/>
         <title> Welcome ${name} </title>
-        <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        </style>
     </head>
     <body>
+    <div class = "container">
         <div> <h1> Welcome ${name}! </h1> </div>
         <div>  <h3> Todo: </h3> </div>
         <div>
-        <table>
+        <table class = "table">
             <thead>
                 <tr>
                     <th> id </th>
@@ -41,5 +36,6 @@
         </div>
         <script src="webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
         <script src="webjars/jquery/3.6.1/jquery.min.js"></script>
+    </div>
     </body>
 </html>
