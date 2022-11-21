@@ -12,18 +12,20 @@
         <table class = "table">
             <thead>
                 <tr>
-                    <th> id </th>
-                    <th> title </th>
-                    <th> description </th>
-                    <th> target </th>
-                    <th> created </th>
-                    <th> status </th>
+                    <th> ID </th>
+                    <th> Username </th>
+                    <th> Title </th>
+                    <th> Description </th>
+                    <th> Target </th>
+                    <th> Created </th>
+                    <th> Done? </th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items = "${todos}" var = "todo">
                 <tr>
                     <td> ${todo.id}</td>
+                    <td> ${todo.username}</td>
                     <td> ${todo.title}</td>
                     <td>${todo.description}</td>
                     <td> ${todo.targetDate} </td>
@@ -33,6 +35,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        <a href="addtodo" class = "btn btn-success">Add Todo </a>
         </div>
         <script src="webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
         <script src="webjars/jquery/3.6.1/jquery.min.js"></script>
