@@ -4,6 +4,33 @@ import java.time.LocalDate;
 
 public class Todo {
     private int id;
+    private String title, description;
+    private LocalDate targetDate, createdDate;
+    private boolean finished;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDate getTargetDate() {
+        return targetDate;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
 
     @Override
     public String toString() {
@@ -16,10 +43,6 @@ public class Todo {
                 ", finished=" + finished +
                 '}';
     }
-
-    private String title, description;
-    private LocalDate targetDate, createdDate;
-    private boolean finished;
 
     public Todo(int id, String title, String description, LocalDate targetDate, LocalDate createdDate, boolean finished) {
         this.id = id;
