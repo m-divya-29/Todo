@@ -23,4 +23,10 @@ public class Hello {
                "</body>" +
                "</html>";
     }
+
+    //returns jsp at /src/main/resources/META-INF/resources/WEB-INF/jsp (must add apache-jasper dependency to pom)
+    @RequestMapping("/hellojsp")
+    public String greetHelloJsp(){
+        return "hello";
+    }
 }
