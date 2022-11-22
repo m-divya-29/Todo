@@ -9,7 +9,10 @@
     <div class = "container">
         <form:form method="post" modelAttribute="todo">
         Enter title: <form:input type="text" path="title" required="true"/>
+        <form:errors  path = "title" cssClass="text-danger" />
+        <br/>
         Enter description: <form:input type="text" path = "description" />
+        <form:errors  path = "description" cssClass="text-warning"/>
         <form:input type="hidden" path = "id" />
         <form:input type="hidden" path = "finished" />
         <input type = "submit" class = "btn btn-success"/>

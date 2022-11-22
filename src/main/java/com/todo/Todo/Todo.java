@@ -1,5 +1,7 @@
 package com.todo.Todo;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
@@ -7,6 +9,7 @@ public class Todo {
 
     private String username;
     private int id;
+    @Size(min = 10, message = "Input at least 10 characters")
     private String title, description;
     private LocalDate targetDate, createdDate;
     private boolean finished;
