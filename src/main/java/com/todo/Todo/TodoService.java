@@ -19,6 +19,9 @@ public class TodoService {
         todos.add(new Todo(++counter, username, title, description,
                 LocalDate.now().plusYears(1), LocalDate.now(), false));
     }
+    public void deleteTodoById(int id){
+        todos.removeIf(todo -> todo.getId() == id);
+    }
     public List<Todo> getTodos(){
         return todos;
     }
