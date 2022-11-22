@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class TodoService {
     static List<Todo> todos = new ArrayList<>();
-    private static int counter = 0;
+    protected static int counter = 0;
     static {
         todos.add(new Todo(++counter, "Divya", "spring", "finish spring boot",
                 LocalDate.now().plusDays(10), LocalDate.now(), false));
