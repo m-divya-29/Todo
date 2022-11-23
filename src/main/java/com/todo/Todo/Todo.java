@@ -6,11 +6,40 @@ import java.time.LocalDate;
 
 public class Todo {
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTargetDate(LocalDate targetDate) {
+        this.targetDate = targetDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 
     private String username;
     private int id;
-    @Size(min = 10, message = "Input at least 10 characters")
-    private String title, description;
+    @Size(min = 3, message = "Input at least 3 characters")
+    private String title;
+    @Size(min = 5, message = "Input at least 5 characters")
+    private String description;
     private LocalDate targetDate, createdDate;
     private boolean finished;
     public String getUsername() {

@@ -20,6 +20,7 @@
                     <th> Created </th>
                     <th> Done? </th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +33,8 @@
                     <td> ${todo.targetDate} </td>
                     <td> ${todo.createdDate}</td>
                     <td> ${todo.finished}</td>
-                    <td><a href="delete-todo?id=${todo.id}" class="btn btn-danger">DELETE</a>
+                    <td><a href="delete-todo?id=${todo.id}" class="btn ">DELETE</a></td>
+                    <td><a href="update-todo?id=${todo.id}" class="btn ">UPDATE</a></td>
                 </tr>
                 </c:forEach>
             </tbody>

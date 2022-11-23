@@ -7,6 +7,7 @@
     </head>
     <body>
     <div class = "container">
+        <div class = "container"><h3>Add a new Todo item here!</h3></div>
         <form:form method="post" modelAttribute="todo">
         Enter title: <form:input type="text" path="title" required="true"/>
         <form:errors  path = "title" cssClass="text-danger" />
@@ -15,6 +16,7 @@
         <form:errors  path = "description" cssClass="text-warning"/>
         <form:input type="hidden" path = "id" />
         <form:input type="hidden" path = "finished" />
+        <br/>
         <input type = "submit" class = "btn btn-success"/>
         </form:form>
         </div>

@@ -1,5 +1,7 @@
 package com.todo.Todo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -8,6 +10,7 @@ import java.util.List;
 @Service
 public class TodoService {
     static List<Todo> todos = new ArrayList<>();
+    Logger logger = LoggerFactory.getLogger(getClass());
     protected static int counter = 0;
     static {
         todos.add(new Todo(++counter, "Divya", "spring", "finish spring boot",
@@ -24,5 +27,16 @@ public class TodoService {
     }
     public List<Todo> getTodos(){
         return todos;
+    }
+
+    public Todo findById(int id) {
+        logger.debug("Find by ID: "+id);
+        Todo result = todos.stream().filter(todo -> todo.getId() == id).findFirst().get();
+        logger.debug("Found "+result+" with id "+id);
+        return result;
+    }
+    public void updateTodoById(Todo updateTodo){
+        deleteTodoById(updateTodo.getId());
+        addNewTodo(updateTodo.getUsername(), updateTodo.getTitle(), updateTodo.getDescription());
     }
 }

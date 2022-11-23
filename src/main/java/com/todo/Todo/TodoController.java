@@ -29,7 +29,7 @@ public class TodoController {
     public String addNewTodo(ModelMap map){
         String user = (String) map.get("name");
         //2 way binding :: add a dummy to do so that model is not empty for next 'addtodo' call.
-        Todo td = new Todo(0, user, "Drawing", "",
+        Todo td = new Todo(0, user, "", "",
                 LocalDate.now().plusMonths(4), LocalDate.now(), false );
         map.put("todo", td);
         return "addtodo";
@@ -47,5 +47,23 @@ public class TodoController {
     public String deleteTodo(@RequestParam int id){
         todoService.deleteTodoById(id);
         return "redirect:/todo";
+    }
+
+    @RequestMapping(value = "update-todo", method = RequestMethod.GET)
+    public String updateTodo(@RequestParam int id, ModelMap map){
+        Todo td = todoService.findById(id);
+        map.put("todo", td);
+        return "addtodo";
+    }
+
+    @RequestMapping(value="update-todo", method=RequestMethod.POST)
+    public String saveUpdateTodo(ModelMap map, @Valid Todo updatedTodo, BindingResult result) {
+        if(result.hasErrors()){
+            return "addtodo";
+        }
+        String username = (String) map.get("name");
+        updatedTodo.setUsername(username);
+        todoService.updateTodoById(updatedTodo);
+        return "redirect:/todo"; //todos jsp
     }
 }
