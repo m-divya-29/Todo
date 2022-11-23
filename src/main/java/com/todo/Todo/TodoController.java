@@ -28,10 +28,13 @@ public class TodoController {
     @RequestMapping(value = "addtodo", method= RequestMethod.GET)
     public String addNewTodo(ModelMap map){
         String user = (String) map.get("name");
+
+        //Set default values(to ensure mandatory fields)
         //2 way binding :: add a dummy to do so that model is not empty for next 'addtodo' call.
         Todo td = new Todo(0, user, "", "",
                 LocalDate.now(), LocalDate.now(), false );
         map.put("todo", td);
+
         return "addtodo";
     }
     @RequestMapping(value = "addtodo", method= RequestMethod.POST)
