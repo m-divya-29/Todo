@@ -3,24 +3,45 @@
 <html>
     <head>
         <link href = "webjars/bootstrap/5.2.2/css/bootstrap.min.css" rel = "stylesheet"/>
+        <link href = "webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel = "stylesheet"/>
         <title> Welcome ${name} </title>
     </head>
     <body>
     <div class = "container">
         <div class = "container"><h3>Add a new Todo item here!</h3></div>
         <form:form method="post" modelAttribute="todo">
-        Enter title: <form:input type="text" path="title" required="true"/>
-        <form:errors  path = "title" cssClass="text-danger" />
-        <br/>
-        Enter description: <form:input type="text" path = "description" />
-        <form:errors  path = "description" cssClass="text-warning"/>
-        <form:input type="hidden" path = "id" />
-        <form:input type="hidden" path = "finished" />
-        <br/>
-        <input type = "submit" class = "btn btn-success"/>
+            <!-- path must match Todo.attribute-name -->
+            <fieldset class="mb-3">
+            <form:label path="title">Title </form:label>
+            <form:input type="text" path="title" required="true"/>
+            <form:errors  path = "title" cssClass="text-danger" />
+            </fieldset>
+
+            <fieldset class = "mb-3">
+            <form:label path ="description">Description</form:label>
+            <form:input type="text" path = "description" />
+            <form:errors  path = "description" cssClass="text-warning"/>
+            </fieldset>
+
+            <fieldset>
+            <form:label path = "targetDate"> Target Date</form:label>
+            <form:input type = "text" path = "targetDate"/>
+            <form:errors  path = "targetDate" cssClass="text-warning"/>
+            </fieldset>
+            <form:input type="hidden" path = "id" />
+            <form:input type="hidden" path = "finished" />
+            <br/>
+            <input type = "submit" class = "btn btn-success"/>
         </form:form>
         </div>
         <script src="webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
         <script src="webjars/jquery/3.6.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript">
+        $('#targetDate').datepicker({
+            format: 'yyyy-mm-dd',
+        });
+        </script>
     </body>
 </html>
+

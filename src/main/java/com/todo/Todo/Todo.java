@@ -1,5 +1,6 @@
 package com.todo.Todo;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -40,7 +41,9 @@ public class Todo {
     private String title;
     @Size(min = 5, message = "Input at least 5 characters")
     private String description;
-    private LocalDate targetDate, createdDate;
+    @FutureOrPresent(message = "Enter today or a future date")
+    private LocalDate targetDate;
+    private LocalDate createdDate;
     private boolean finished;
     public String getUsername() {
         return username;

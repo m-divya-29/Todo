@@ -18,9 +18,9 @@ public class TodoService {
         todos.add(new Todo(++counter, "Divya","react", "finish react",
                 LocalDate.now().plusDays(5), LocalDate.now(), false));
     }
-    public void addNewTodo(String username, String title, String description){
+    public void addNewTodo(String username, String title, String description, LocalDate target){
         todos.add(new Todo(++counter, username, title, description,
-                LocalDate.now().plusYears(1), LocalDate.now(), false));
+                target, LocalDate.now(), false));
     }
     public void deleteTodoById(int id){
         todos.removeIf(todo -> todo.getId() == id);
@@ -37,6 +37,7 @@ public class TodoService {
     }
     public void updateTodoById(Todo updateTodo){
         deleteTodoById(updateTodo.getId());
-        addNewTodo(updateTodo.getUsername(), updateTodo.getTitle(), updateTodo.getDescription());
+        addNewTodo(updateTodo.getUsername(), updateTodo.getTitle(),
+                updateTodo.getDescription(), updateTodo.getTargetDate());
     }
 }

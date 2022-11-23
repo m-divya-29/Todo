@@ -30,7 +30,7 @@ public class TodoController {
         String user = (String) map.get("name");
         //2 way binding :: add a dummy to do so that model is not empty for next 'addtodo' call.
         Todo td = new Todo(0, user, "", "",
-                LocalDate.now().plusMonths(4), LocalDate.now(), false );
+                LocalDate.now(), LocalDate.now(), false );
         map.put("todo", td);
         return "addtodo";
     }
@@ -40,7 +40,7 @@ public class TodoController {
             return "addtodo";
         }
         String user = (String) map.get("name");
-        todoService.addNewTodo(user, todo.getTitle(), todo.getDescription());
+        todoService.addNewTodo(user, todo.getTitle(), todo.getDescription(), todo.getTargetDate());
         return "redirect:/todo"; //calls URL @RequestMapping("/todo")
     }
     @RequestMapping("delete-todo")
@@ -64,6 +64,6 @@ public class TodoController {
         String username = (String) map.get("name");
         updatedTodo.setUsername(username);
         todoService.updateTodoById(updatedTodo);
-        return "redirect:/todo"; //todos jsp
+        return "redirect:/todo";
     }
 }
