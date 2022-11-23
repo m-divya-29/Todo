@@ -6,12 +6,11 @@
     <table class = "table">
         <thead>
             <tr>
-                <th> ID </th>
                 <th> Username </th>
                 <th> Title </th>
                 <th> Description </th>
                 <th> Target </th>
-                <th> Created </th>
+                <th> Last Updated </th>
                 <th> Done? </th>
                 <th></th>
                 <th></th>
@@ -20,7 +19,6 @@
         <tbody>
             <c:forEach items = "${todos}" var = "todo">
             <tr>
-                <td> ${todo.id}</td>
                 <td> ${todo.username}</td>
                 <td> ${todo.title}</td>
                 <td>${todo.description}</td>
