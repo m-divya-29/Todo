@@ -1,6 +1,8 @@
 package com.todo.Todo;
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -27,7 +29,7 @@ public class TodoController {
 
     @RequestMapping(value = "addtodo", method= RequestMethod.GET)
     public String addNewTodo(ModelMap map){
-        String user = (String) map.get("name");
+        String user = getLoggedInUserName();
 
         //Set default values(to ensure mandatory fields)
         //2 way binding :: add a dummy to do so that model is not empty for next 'addtodo' call.
@@ -42,10 +44,11 @@ public class TodoController {
         if(bindingResult.hasErrors()){
             return "addtodo";
         }
-        String user = (String) map.get("name");
+        String user = getLoggedInUserName();
         todoService.addNewTodo(user, todo.getTitle(), todo.getDescription(), todo.getTargetDate());
         return "redirect:/todo"; //calls URL @RequestMapping("/todo")
     }
+
     @RequestMapping("delete-todo")
     public String deleteTodo(@RequestParam int id){
         todoService.deleteTodoById(id);
@@ -64,9 +67,17 @@ public class TodoController {
         if(result.hasErrors()){
             return "addtodo";
         }
-        String username = (String) map.get("name");
+        String username = getLoggedInUserName();
         updatedTodo.setUsername(username);
         todoService.updateTodoById(updatedTodo);
         return "redirect:/todo";
+    }
+
+    /**
+     * Get currently loggedin username
+     * @return loggedin username
+     */
+    private static String getLoggedInUserName() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
